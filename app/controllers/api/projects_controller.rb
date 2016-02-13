@@ -8,10 +8,10 @@ class Api::ProjectsController < ApplicationController
 	def show
 		begin
 			@project = Project.find(params[:id])
+			render json: @project
 		rescue
-			render status: 404
+			render nothing: true, status: 404
 		end
-		render json: @project
 	end
 	
 	def create
@@ -27,11 +27,11 @@ class Api::ProjectsController < ApplicationController
 	def destroy
 		begin
 			@project = Project.find(params[:id])
+			@project.destroy
+			head :no_content
 		rescue
-			render status: 404
+			render nothing: true, status: 404
 		end
-		@project.destroy
-		head :no_content
 	end
 	
 	private
