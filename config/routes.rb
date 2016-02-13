@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  
+  namespace :api, { format: "json" } do
+    resources :projects, only: [:index, :create, :show, :destroy]
+  end
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
