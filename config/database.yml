@@ -23,4 +23,8 @@ test:
 production:
   <<: *default
   adapter: postgresql
-  database: d8m7icojrfirla
+  encoding: utf8
+  username: <%= ENV['RAILS_DB_USERNAME'] %>
+  host: <%= ENV['RAILS_DB_HOST'] %>
+  database: <%= ENV['RAILS_DB_DATABASE'] %>
+  password: <%= ENV['RAILS_DB_PASSWORD'] %>
