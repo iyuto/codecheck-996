@@ -5,3 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+# oauthのトークンをDBに挿入する
+token = Token.find_or_initialize_by(id: 1)
+token.update(access_token: "", refresh_token: "", expire_time: 0)
