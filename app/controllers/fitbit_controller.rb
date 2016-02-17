@@ -4,6 +4,7 @@ class FitbitController < ApplicationController
   before_action :initialize_token
   
   def index
+    render json: @token.get_devices_info
   end
 
   def show

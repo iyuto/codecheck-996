@@ -1,9 +1,30 @@
 class Token < ActiveRecord::Base
 	after_initialize :set_token
 	
+	# def get_summary
+	# 	# 概要を取得
+	# 	begin
+	# 		response = @access_token.get("https://api.fitbit.com/1/user/-/activities/date/" + Time.now.strftime("%Y-%m-%d") + ".json")
+  #     data = JSON.parse(response.body)
+  #     return data
+  #   rescue
+  #     return $!
+  #   end
+	# end
+	
+	# Fitbitバンドの情報
+	def get_devices_info
+		begin
+			response = @access_token.get("https://api.fitbit.com/1/user/-/devices.json")
+      data = JSON.parse(response.body)
+      return data
+    rescue
+      return $!
+    end
+	end
+	
+	# 歩数データ
 	def get_today_step
-		## 歩数データ
-    # 今日の歩数をFitbitAPIから取得
     begin
       response = @access_token.get("https://api.fitbit.com/1/user/-/activities/steps/date/today/1d/15min.json")
       data = JSON.parse(response.body)
@@ -13,9 +34,8 @@ class Token < ActiveRecord::Base
     end
 	end
 	
+	# 睡眠データ
 	def get_today_sleep
-		## 睡眠データ
-    # 今日の睡眠をFitbitAPIから取得
     begin
 			response = @access_token.get("https://api.fitbit.com/1/user/-/sleep/date/today.json")
       data = JSON.parse(response.body)
