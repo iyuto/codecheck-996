@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   
+  get 'fitbit/index'
+
+  get 'fitbit/show'
+
   namespace :api, { format: "json" } do
     resources :projects, only: [:index, :create, :show, :destroy]
   end
