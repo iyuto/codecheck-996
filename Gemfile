@@ -48,6 +48,8 @@ group :development do
   gem 'spring'
   gem 'sqlite3'
   gem 'figaro'
+  
+  gem 'quiet_assets'
 end
 
 group :production do
